@@ -1,3 +1,4 @@
-export function loginController(reg, res){
+export function loginController(req, res){
       res.send("login route");
 }
+
