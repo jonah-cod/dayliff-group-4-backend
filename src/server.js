@@ -5,6 +5,7 @@ import * as dotenv from "dotenv";
 import db from "./config/database.js";
 import { userRouter } from "./routes/usersRoutes.js";
 import orderRoutes from "./routes/ordersRoutes.js";
+import routesRouter from './routes/routesRouter.js'
 import { messageService } from "./services/messageService.js";
 dotenv.config();
 
@@ -25,6 +26,7 @@ const main = async () => {
   //app.post(`${baseURL}/sms`, (req, res)=>{
   //   messageService({content: "Test", phoneNumber: "254799541853", country:"KENYA"});
   // })
+  app.use(`${baseURL}/routes`, routesRouter)
 
   //route not found handler middleware
 
