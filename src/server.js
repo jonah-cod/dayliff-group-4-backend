@@ -1,51 +1,39 @@
 import express from "express";
+import bodyParser from "body-parser";
+import cors from "cors";
 import * as dotenv from "dotenv";
-import { MongoClient } from "mongodb";
-import { config } from "./config/config.js";
+import db from "./config/database.js";
 import { userRouter } from "./routes/usersRoutes.js";
-
 dotenv.config();
 
-async function appStartUp() {
+const main = async () => {
   const app = express();
-
+  app.use(bodyParser.json());
   app.use(express.json());
-  const client = new MongoClient(config.dbUrl);
-  try {
-    await client.connect();
+  app.use(bodyParser.urlencoded({ extended: true }));
+  app.use(express.urlencoded({ extended: false }));
+  app.use(cors());
 
-    console.log("App Connected to Mongo DB");
+  app.get("/status", (req, res) => res.json({ status: ok }));
+  app.use((req, res, next) => (req.MongoClient = client && next()));
+  app.use("/users", userRouter);
 
-    app.get("/status", (req, res) => res.json({ status: ok }));
+  //route not found handler middleware
 
-    app.use((req, res, next) => (req.MongoClient = client && next()));
+  app.use("*", (req, res, next) => {
+    const error = { status: 404, message: "route not defined" };
+    next(error);
+  });
 
-    app.use("/users", userRouter);
+  //global error handler middleware
+  app.use((error, req, res, next) => {
+    const { status, message } = error;
+    res.status(status || 500).json({ status, message });
+  });
 
-    //route not found handler middleware
+  app.listen(process.env.PORT || 4000, async () => {
+    console.log(`Server Running ${process.env.PORT}`), await db();
+  });
+};
 
-    app.use("*", (req, res, next) => {
-      const error = { status: 404, message: "route not defined" };
-      next(error);
-    });
-
-    //global error handler middleware
-    app.use((error, req, res, next) => {
-      const { status, message } = error;
-      res.status(status || 500).json({ status, message });
-    });
-
-    const port = process.env.PORT || 3500;
-
-    app.listen(port, () => {
-      console.log(`App listening on port: ${port}`);
-    });
-    
-  } catch (error) {
-    console.log(error);
-  } finally {
-    client.close();
-  }
-}
-
-appStartUp();
+main();
