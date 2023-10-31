@@ -5,6 +5,7 @@ import * as dotenv from "dotenv";
 import db from "./config/database.js";
 import { userRouter } from "./routes/usersRoutes.js";
 import orderRoutes from "./routes/ordersRoutes.js";
+import { messageService } from "./services/messageService.js";
 dotenv.config();
 
 const main = async () => {
@@ -19,6 +20,11 @@ const main = async () => {
   app.get(`${baseURL}/status`, (req, res) => res.json({ status: "ok" }));
   app.use(`${baseURL}/users`, userRouter);
   app.use(`${baseURL}/orders`, orderRoutes);
+
+  // testing sms service
+  //app.post(`${baseURL}/sms`, (req, res)=>{
+  //   messageService({content: "Test", phoneNumber: "254799541853", country:"KENYA"});
+  // })
 
   //route not found handler middleware
 
