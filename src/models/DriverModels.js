@@ -3,7 +3,7 @@ const { Schema,  } = mongoose
 
 const Drivers = new Schema({
     name : String,
-    driverId : Number,
+    driverId : String,
     email : String,
     phone: Number,
     vehicleAssigned: String,

@@ -4,7 +4,7 @@ import cors from "cors";
 import * as dotenv from "dotenv";
 import db from "./config/database.js";
 import { userRouter } from "./routes/usersRoutes.js";
-import   driverRouter  from "./routes/DriverRoutes.js";
+import   driverRouter  from "./routes/driverRoutes.js";
 
 import orderRoutes from "./routes/ordersRoutes.js";
 import routesRouter from './routes/routesRouter.js'

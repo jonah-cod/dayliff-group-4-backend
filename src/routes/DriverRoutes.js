@@ -1,12 +1,16 @@
 import { Router } from "express";
-import { allDrivers, newDriver, updateDriver, deleteDriver} from "../controllers/DriverController.js";
+import {
+	allDrivers,
+	newDriver,
+	updateDriver,
+	deleteDriver,
+} from "../controllers/driverController.js";
 
-const driverRouter =  Router();
+const driverRouter = Router();
 
-driverRouter.get('/', allDrivers);
-driverRouter.post('/', newDriver);
-driverRouter.put('/:driverId', updateDriver);
-driverRouter.delete('/:driverId', deleteDriver)
-
+driverRouter.get("/", allDrivers);
+driverRouter.post("/", newDriver);
+driverRouter.put("/:driverId", updateDriver);
+driverRouter.delete("/:driverId", deleteDriver);
 
 export default driverRouter;
