@@ -9,6 +9,3 @@ userRouter.post('/signup', signupController)
 // signup {email, phonenumber, full names, password, role /driver/admin, }
 // driver/ get all drivers
 //
-
-
-

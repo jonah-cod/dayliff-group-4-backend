@@ -2,7 +2,7 @@ import * as dotenv from 'dotenv';
 
 dotenv.config();
 
-const username = process.env.USER;
+const username = process.env.MONGOUSER;
 const password = process.env.PASSWORD;
 console.log(username, password)
 
