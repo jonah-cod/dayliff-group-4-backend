@@ -4,6 +4,7 @@ import cors from "cors";
 import * as dotenv from "dotenv";
 import db from "./config/database.js";
 import { userRouter } from "./routes/usersRoutes.js";
+import orderRoutes from "./routes/ordersRoutes.js";
 dotenv.config();
 
 const main = async () => {
@@ -14,9 +15,10 @@ const main = async () => {
   app.use(express.urlencoded({ extended: false }));
   app.use(cors());
 
-  app.get("/status", (req, res) => res.json({ status: ok }));
-  app.use((req, res, next) => (req.MongoClient = client && next()));
-  app.use("/users", userRouter);
+  const baseURL = "/api/v1";
+  app.get(`${baseURL}/status`, (req, res) => res.json({ status: "ok" }));
+  app.use(`${baseURL}/users`, userRouter);
+  app.use(`${baseURL}/orders`, orderRoutes);
 
   //route not found handler middleware
 
@@ -27,6 +29,7 @@ const main = async () => {
 
   //global error handler middleware
   app.use((error, req, res, next) => {
+    console.log(error);
     const { status, message } = error;
     res.status(status || 500).json({ status, message });
   });
