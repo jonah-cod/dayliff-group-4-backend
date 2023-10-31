@@ -4,6 +4,8 @@ import cors from "cors";
 import * as dotenv from "dotenv";
 import db from "./config/database.js";
 import { userRouter } from "./routes/usersRoutes.js";
+import   driverRouter  from "./routes/DriverRoutes.js";
+
 import orderRoutes from "./routes/ordersRoutes.js";
 import routesRouter from './routes/routesRouter.js'
 import { messageService } from "./services/messageService.js";
@@ -21,13 +23,13 @@ const main = async () => {
   app.get(`${baseURL}/status`, (req, res) => res.json({ status: "ok" }));
   app.use(`${baseURL}/users`, userRouter);
   app.use(`${baseURL}/orders`, orderRoutes);
-
+ app.use(`${baseURL}/drivers`, driverRouter);
   // testing sms service
   //app.post(`${baseURL}/sms`, (req, res)=>{
   //   messageService({content: "Test", phoneNumber: "254799541853", country:"KENYA"});
   // })
-  app.use(`${baseURL}/routes`, routesRouter)
-
+ 
+ 
   //route not found handler middleware
 
   app.use("*", (req, res, next) => {
