@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { config } from "./config.js";
 
 const connect = async () => {
   // connect to DB
@@ -7,7 +8,7 @@ const connect = async () => {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   };
-  const mongodbUri = process.env.mongoDBUri;
+  const mongodbUri = config.dbUrl;
   await mongoose.connect(mongodbUri, mongoOptions);
   const conn = mongoose.connection;
   conn.on("error", console.error.bind(console, "connection error:"));

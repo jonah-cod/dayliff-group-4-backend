@@ -4,6 +4,8 @@ import cors from "cors";
 import * as dotenv from "dotenv";
 import db from "./config/database.js";
 import { userRouter } from "./routes/usersRoutes.js";
+import   driverRouter  from "./routes/DriverRoutes.js";
+
 dotenv.config();
 
 const main = async () => {
@@ -15,9 +17,8 @@ const main = async () => {
   app.use(cors());
 
   app.get("/status", (req, res) => res.json({ status: ok }));
-  app.use((req, res, next) => (req.MongoClient = client && next()));
   app.use("/users", userRouter);
-
+  app.use("/drivers", driverRouter);
   //route not found handler middleware
 
   app.use("*", (req, res, next) => {
