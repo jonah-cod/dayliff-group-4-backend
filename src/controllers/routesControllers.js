@@ -1,4 +1,5 @@
 import RouteModel from "../models/routes.js";
+import { idGenerator } from "../utilities/idGenerator.js";
 
 export async function getRoutesControllers(req, res) {
   try {
@@ -12,9 +13,9 @@ export async function getRoutesControllers(req, res) {
 export async function postNewRouteController(req, res) {
   let route = req.body;
   try {
-    let newRoute = new RouteModel(route);
-    let result = await newRoute.save();
-    res.json(result);
+    let newRoute = new RouteModel({...route, route_id:idGenerator()});
+    await newRoute.save();
+    res.json({succes:true, message: "route saved"});
   } catch (error) {
     console.log(error);
   }
@@ -23,7 +24,7 @@ export async function postNewRouteController(req, res) {
 export async function updateRouteController(req, res){
       try {
             let updatedRoute = req.body;
-            const { route_id} = updatedRoute;
+            const { route_id} = req.params;
             let result = await RouteModel.findOneAndUpdate({route_id: route_id}, updatedRoute)
             res.json(result);
       } catch (error) {
@@ -36,7 +37,12 @@ export async function deleteRouteController(req, res){
 
       try {
             let result = await RouteModel.deleteOne({route_id});
-            res.json(result);
+            let { deletedCount, acknowledged} = result;
+        if (acknowledged && deletedCount) {
+            res.json({success: true, message:"route deleted"});
+        }else{
+            res.json({success: false, message: "failed"})
+        }
       } catch (error) {
             console.log(error)
       }

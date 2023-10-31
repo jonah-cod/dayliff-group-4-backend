@@ -6,7 +6,7 @@ const routesRouter = Router();
 
 routesRouter.get('/', getRoutesControllers);
 routesRouter.post('/', postNewRouteController);
-routesRouter.put('/', updateRouteController);
-routesRouter.post('/:route_id', deleteRouteController);
+routesRouter.put('/:route_id', updateRouteController);
+routesRouter.delete('/:route_id', deleteRouteController);
 
 export default routesRouter;
