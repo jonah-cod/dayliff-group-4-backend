@@ -10,4 +10,7 @@ export function loginController(req, res){
 export function signupController(req, res){
       const usersColletion = mongoClient.db().collection("users");
       usersColletion.insertOne({name: "jane doe", email: "janedoe@gmail.com"})
+
+
+
 }

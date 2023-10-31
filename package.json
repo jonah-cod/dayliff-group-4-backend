@@ -1,16 +1,22 @@
 {
   "name": "dayliff-group-4-backend",
   "version": "1.0.0",
+  "description": "",
   "main": "server.js",
   "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "quickpush": "git status && git add * && git commit * -m \"Updated Code\" && git push"
+  },
   "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "mongodb": "^6.2.0"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon src/server.js"
+    "mongodb": "^6.2.0",
+    "mongoose": "^7.6.4",
+    "nodemon": "^3.0.1"
   },
   "repository": {
     "type": "git",
@@ -18,10 +24,9 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/jonah-cod/dayliff-group-4-backend/issues"
   },
-  "homepage": "https://github.com/jonah-cod/dayliff-group-4-backend#readme",
-  "description": ""
+  "homepage": "https://github.com/jonah-cod/dayliff-group-4-backend#readme"
 }
