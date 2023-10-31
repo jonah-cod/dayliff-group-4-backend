@@ -13,7 +13,6 @@ async function appStartUp() {
   const client = new MongoClient(config.dbUrl);
   try {
     await client.connect();
-
     console.log("App Connected to Mongo DB");
 
     app.get("/status", (req, res) => res.json({ status: ok }));

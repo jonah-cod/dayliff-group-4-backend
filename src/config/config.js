@@ -1,3 +1,11 @@
+import * as dotenv from 'dotenv';
+
+dotenv.config();
+
+const username = process.env.USER;
+const password = process.env.PASSWORD;
+console.log(username, password)
+
 export const config = {
-      dbUrl: 'mongodb://localhost:27017/logistics_db'
+      dbUrl: `mongodb+srv://${username}:${password}@cluster0.t3sxzqv.mongodb.net/`
 }

@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { loginController } from "../controllers/usersController.js";
+import { loginController, signupController } from "../controllers/usersController.js";
 export const userRouter =  Router() 
 
-userRouter.get('/login', loginController)
-
+userRouter.post('/login', loginController)
+userRouter.post('/signup', signupController)
 
 
 // signup {email, phonenumber, full names, password, role /driver/admin, }
