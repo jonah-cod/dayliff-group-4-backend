@@ -9,6 +9,8 @@ const orderRoutes = Router();
 orderRoutes.get('/', getAllOrders);
 orderRoutes.post('/', newOrderController);
 orderRoutes.put('/',  updateOrderController);
-orderRoutes.delete('/:order_id', deleteOrderController)
+orderRoutes.delete('/:order_id', deleteOrderController);
+
+
 
 export default orderRoutes;
