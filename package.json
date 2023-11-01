@@ -36,6 +36,6 @@
   },
   "homepage": "https://github.com/jonah-cod/dayliff-group-4-backend#readme",
   "engines": {
-    "node": "^18.x"
+    "node": "18"
   }
 }
