@@ -4,7 +4,7 @@ import {
 	newDriver,
 	updateDriver,
 	deleteDriver,
-} from "../controllers/driverController.js";
+} from "../controllers/DriverController.js";
 
 const driverRouter = Router();
 
