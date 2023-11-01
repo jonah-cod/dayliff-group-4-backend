@@ -2,11 +2,11 @@ import mongoose from 'mongoose'
 const { Schema,  } = mongoose
 
 const Drivers = new Schema({
+    _id: String,
     name : String,
-    driverId : String,
     email : String,
-    phone_number: Number,
-    vehicleAssigned: String,
+    phone_number: String,
+    license_number: String,
     role: String,
     password: String,
 }) ;

@@ -34,7 +34,7 @@ export async function loginController(req, res) {
 				? res.json({ succes: true, message: "logged in", token })
 				: res.status(403).json({ succes: false, message: "false credentials" });
 		} else {
-			res.status(404).json({ success: true, message: "no user found" });
+			res.status(404).json({ success: false, message: "no user found" });
 		}
 	} catch (error) {
 		console.log(error);
@@ -48,7 +48,7 @@ export async function signupController(req, res) {
 		let new_user = new UserModel({
 			...user,
 			password: encryptedPWD,
-			user_id: idGenerator(),
+			_id: idGenerator(),
 		});
 		await new_user.save();
 		res.json({ success: true, message: "user saved" });
@@ -61,7 +61,7 @@ export async function updateUserController(req, res) {
 	try {
             let { user_id} = req.params;
 		let updatedUser = req.body;
-		await UserModel.findOneAndUpdate({ user_id }, updatedUser);
+		await UserModel.findOneAndUpdate({ _id:user_id }, updatedUser);
             res.json({success: true, message: "user updated"})
 	} catch (error) {
 		console.log(error);
@@ -70,14 +70,15 @@ export async function updateUserController(req, res) {
 
 export async function deleteUserController(req, res) {
 	let { user_id } = req.params;
-
 	try {
-		let result = await UserModel.deleteOne({ user_id });
+		let result = await UserModel.deleteOne({ _id:user_id });
 		let { deletedCount, acknowledged } = result;
 		if (acknowledged && deletedCount) {
 			res.json({ success: true, message: "user deleted" });
 		} else {
 			res.json({ success: false, message: "failed" });
 		}
-	} catch (error) {}
+	} catch (error) {
+		console.log(error)
+	}
 }
