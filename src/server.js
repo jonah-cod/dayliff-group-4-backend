@@ -11,9 +11,9 @@ import routesRouter from "./routes/routesRouter.js";
 import { messageService } from "./services/messageService.js";
 import db from "./config/database.js";
 dotenv.config();
-
+const app = express();
 const main = async () => {
-	const app = express();
+	
 	app.use(bodyParser.json());
 	app.use(express.json());
 	app.use(bodyParser.urlencoded({ extended: true }));
@@ -51,3 +51,5 @@ const main = async () => {
 };
 
 main();
+
+export default app;
