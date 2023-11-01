@@ -13,7 +13,7 @@ const orderSchema  = new Schema({
             long: String
       },
       order_status: String,
-      route_id: String,
+      route_id: {type: Schema.Types.ObjectId, ref: "RouteModel",default: null},
       updated_at: {type: Date},
 });
 

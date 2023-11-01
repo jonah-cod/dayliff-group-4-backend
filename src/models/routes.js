@@ -10,6 +10,7 @@ let routeSchema = new Schema({
       route_cost:String, 
       distance_in_km: Number,
       estimated_duration_minutes: Number,
+      orders: [{type: Schema.Types.ObjectId, ref: "OrderModel",default: null}],
       created_at: Date,
       updated_at: Date
 })
