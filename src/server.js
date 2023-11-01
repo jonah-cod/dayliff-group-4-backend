@@ -8,6 +8,8 @@ import { userRouter } from "./routes/usersRoutes.js";
 import driverRouter from "./routes/DriverRoutes.js";
 import orderRoutes from "./routes/ordersRoutes.js";
 import routesRouter from "./routes/routesRouter.js";
+import vehicleRouter from "./routes/vehicleRoutes.js";
+
 
 import { messageService } from "./services/messageService.js";
 import db from "./config/database.js";
@@ -29,6 +31,7 @@ const main = async () => {
 	app.use(`${baseURL}/routes`, routesRouter);
 	app.use(`${baseURL}/orders`, orderRoutes);
 	app.use(`${baseURL}/drivers`, driverRouter);
+	app.use(`${baseURL}/vehicles`, vehicleRouter);
 	// testing sms service
 	// app.post(`${baseURL}/sms`, (req, res)=>{
 	//   messageService({content: "Test", phoneNumber: "254719263894", country:"KENYA"});
