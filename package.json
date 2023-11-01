@@ -34,5 +34,8 @@
   "bugs": {
     "url": "https://github.com/jonah-cod/dayliff-group-4-backend/issues"
   },
-  "homepage": "https://github.com/jonah-cod/dayliff-group-4-backend#readme"
+  "homepage": "https://github.com/jonah-cod/dayliff-group-4-backend#readme",
+  "engines": {
+    "node": "18.13.0"
+  }
 }
