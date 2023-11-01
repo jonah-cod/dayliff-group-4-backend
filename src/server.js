@@ -21,6 +21,8 @@ const main = async () => {
 	app.use(express.urlencoded({ extended: false }));
 	app.use(cors());
 
+	app.get('/', (req, res)=>res.send("home route"))
+
 	const baseURL = "/api/v1";
 	app.get(`${baseURL}/status`, (req, res) => res.json({ status: "ok" }));
 	app.use(`${baseURL}/users`, userRouter);
