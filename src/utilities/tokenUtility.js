@@ -4,7 +4,7 @@ dotenv.config();
 
 let secret = process.env.SECRET;
 export async function generateToken(payload){
-      return jwt.sign(payload, secret);
+      return await jwt.sign({...payload}, secret, {expiresIn: "24h"});
 }
 
 export async function verifyToken(token){
