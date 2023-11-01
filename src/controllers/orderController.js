@@ -40,6 +40,7 @@ export async function updateOrderController(req, res) {
 
 export async function deleteOrderController(req, res) {
   let { order_id } = req.params;
+  
   try {
     let ackDelete = await OrderModel.deleteOne({ _id:order_id });
     res.json(ackDelete);
@@ -47,3 +48,5 @@ export async function deleteOrderController(req, res) {
     console.log(error);
   }
 }
+
+

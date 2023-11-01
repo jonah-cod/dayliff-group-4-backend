@@ -3,8 +3,8 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;  
 
 let routeSchema = new Schema({
+      _id: String,
       route_name: String,
-      address_name: String,
       origin_address: {lat: String, long: String},
       destination_address: {lat: String, long: String},
       route_cost:String, 

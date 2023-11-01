@@ -70,7 +70,6 @@ export async function updateUserController(req, res) {
 
 export async function deleteUserController(req, res) {
 	let { user_id } = req.params;
-
 	try {
 		let result = await UserModel.deleteOne({ _id:user_id });
 		let { deletedCount, acknowledged } = result;
@@ -79,5 +78,7 @@ export async function deleteUserController(req, res) {
 		} else {
 			res.json({ success: false, message: "failed" });
 		}
-	} catch (error) {}
+	} catch (error) {
+		console.log(error)
+	}
 }

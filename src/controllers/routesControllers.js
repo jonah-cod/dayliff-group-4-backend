@@ -34,7 +34,7 @@ export async function updateRouteController(req, res){
 
 export async function deleteRouteController(req, res){
       let { route_id } = req.params;
-
+      
       try {
             let result = await RouteModel.deleteOne({_id:route_id});
             let { deletedCount, acknowledged} = result;
@@ -47,3 +47,7 @@ export async function deleteRouteController(req, res){
             console.log(error)
       }
 }
+
+
+export async function planRoute(req, res){
+  let payload = req.body;
