@@ -2,6 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import * as dotenv from "dotenv";
+import ServerlessHttp from "serverless-http";
 
 import { userRouter } from "./routes/usersRoutes.js";
 import driverRouter from "./routes/driverRoutes.js";
@@ -52,4 +53,4 @@ const main = async () => {
 
 main();
 
-export default app;
+export default ServerlessHttp(app);
