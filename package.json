@@ -5,9 +5,7 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "./node_modules/.bin/netlify-lambda serve src",
-    "build": "./node_modules/.bin/netlify-lambda build src",
-    
+    "start": "node src/server.js",
     "quickpush": "git status && git add * && git commit * -m \"Updated Code\" && git push"
   },
   "dependencies": {
