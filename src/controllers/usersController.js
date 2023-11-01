@@ -32,9 +32,9 @@ export async function loginController(req, res) {
 			let token = await generateToken(availableUser);
 			pwdMatch
 				? res.json({ succes: true, message: "logged in", token })
-				: res.json({ succes: false, message: "false credentials" });
+				: res.status(403).json({ succes: false, message: "false credentials" });
 		} else {
-			res.json({ success: true, message: "no user found" });
+			res.status(404).json({ success: true, message: "no user found" });
 		}
 	} catch (error) {
 		console.log(error);
