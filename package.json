@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node src/server.js",
-    "build": "next build src",
+    "build": "next build",
     "quickpush": "git status && git add * && git commit * -m \"Updated Code\" && git push"
   },
   "dependencies": {
