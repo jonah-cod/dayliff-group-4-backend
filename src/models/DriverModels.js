@@ -5,7 +5,7 @@ const Drivers = new Schema({
     name : String,
     driverId : String,
     email : String,
-    phone: Number,
+    phone_number: Number,
     vehicleAssigned: String,
     role: String,
     password: String,

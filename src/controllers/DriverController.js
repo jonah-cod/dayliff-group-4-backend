@@ -1,11 +1,13 @@
 import { idGenerator } from "../utilities/idGenerator.js";
+import { encryptPWD } from '../utilities/encryptor.js'
 
 import DriverModel from "../models/DriverModels.js";
 
 export async function newDriver(req, res) {
 	const driver = req.body;
 	try {
-		const newDriver = new DriverModel({...driver, driverId: idGenerator()});
+		let encryptedPWD =  await encryptPWD(driver.password);
+		const newDriver = new DriverModel({...driver, driverId: idGenerator(), password: encryptedPWD});
 		await newDriver.save();
 		res.json({ success: true, message: "driver saved" });
 	} catch (error) {
