@@ -50,4 +50,4 @@ export async function deleteRouteController(req, res){
 
 
 export async function planRoute(req, res){
-  let payload = req.body;
+  let payload = req.body;}
