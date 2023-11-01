@@ -13,7 +13,7 @@ export async function getRoutesControllers(req, res) {
 export async function postNewRouteController(req, res) {
   let route = req.body;
   try {
-    let newRoute = new RouteModel({...route, route_id:idGenerator()});
+    let newRoute = new RouteModel({...route, _id:idGenerator()});
     await newRoute.save();
     res.json({succes:true, message: "route saved"});
   } catch (error) {
@@ -25,7 +25,7 @@ export async function updateRouteController(req, res){
       try {
             let updatedRoute = req.body;
             const { route_id} = req.params;
-            let result = await RouteModel.findOneAndUpdate({route_id: route_id}, updatedRoute)
+            let result = await RouteModel.findOneAndUpdate({_id: route_id}, updatedRoute)
             res.json(result);
       } catch (error) {
             console.log(error)
@@ -36,7 +36,7 @@ export async function deleteRouteController(req, res){
       let { route_id } = req.params;
 
       try {
-            let result = await RouteModel.deleteOne({route_id});
+            let result = await RouteModel.deleteOne({_id:route_id});
             let { deletedCount, acknowledged} = result;
         if (acknowledged && deletedCount) {
             res.json({success: true, message:"route deleted"});

@@ -3,10 +3,9 @@ const { Schema,  } = mongoose
 
 const Drivers = new Schema({
     name : String,
-    driverId : String,
     email : String,
     phone_number: Number,
-    vehicleAssigned: String,
+    license_number: String,
     role: String,
     password: String,
 }) ;
