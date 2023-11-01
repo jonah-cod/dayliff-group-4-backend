@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "nodemon src/server.js",
+    "build": "next build",
     "dev": "nodemon src/server.js",
     "quickpush": "git status && git add * && git commit * -m \"Updated Code\" && git push",
     "vercel-build": "echo hello"
