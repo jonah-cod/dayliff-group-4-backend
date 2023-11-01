@@ -27,8 +27,8 @@ const main = async () => {
 	app.use(`${baseURL}/orders`, orderRoutes);
 	app.use(`${baseURL}/drivers`, driverRouter);
 	// testing sms service
-	//app.post(`${baseURL}/sms`, (req, res)=>{
-	//   messageService({content: "Test", phoneNumber: "254799541853", country:"KENYA"});
+	// app.post(`${baseURL}/sms`, (req, res)=>{
+	//   messageService({content: "Test", phoneNumber: "254719263894", country:"KENYA"});
 	// })
 
 	//route not found handler middleware
