@@ -18,7 +18,7 @@ export async function getUSersController(req, res) {
 export async function loginController(req, res) {
 	let { password, phone_number } = req.body;
 	try {
-		let userFound = await UserModel.find({ phone_number: ParseInt(phone_number) });
+		let userFound = await UserModel.find({ phone_number: parseInt(phone_number) });
 		let driverFound = await DriverModel.find({ phone_number: parseInt(phone_number) });
 
 		let availableUser = userFound.length
