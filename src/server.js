@@ -5,7 +5,7 @@ import * as dotenv from "dotenv";
 import ServerlessHttp from "serverless-http";
 
 import { userRouter } from "./routes/usersRoutes.js";
-import driverRouter from "./routes/driverRoutes.js";
+import driverRouter from "./routes/DriverRoutes.js";
 import orderRoutes from "./routes/ordersRoutes.js";
 import routesRouter from "./routes/routesRouter.js";
 
